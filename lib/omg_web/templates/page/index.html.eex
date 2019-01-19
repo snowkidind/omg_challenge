@@ -1,0 +1,29 @@
+<section class="phx-hero">
+  <h1><%= gettext "Keny's OmiseGO Challenge" %></h1>
+  <p>OmiseGO challenge headquarters</p>
+
+
+  <p><a href="/json_request.html">Original JSON Query and response requirements</a></p>
+</section>
+
+<section class="row">
+  <article class="column">
+    <h2>Resources</h2>
+    <ul>
+      <li>
+        <a href="https://github.com/snowkidind/code-samples">Code Samples From Past Projects</a>
+      </li>
+      <li>
+        <a href="https://kenyruyter.com">Some personal information about me.</a>
+      </li>
+    </ul>
+  </article>
+  <article class="column">
+    <h2>Social</h2>
+    <ul>
+      <li>
+        <a href="https://twitter.com/snowkidind">Twitter @snowkidind</a>
+      </li>
+    </ul>
+  </article>
+</section>
