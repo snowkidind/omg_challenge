@@ -11,18 +11,21 @@ defmodule OmgWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+
+    plug :accepts, ["json-api"]
+    plug Plug.Parsers, parsers: [:urlencoded]
+    #plug JaSerializer.Deserializer
+
   end
 
   scope "/", OmgWeb do
     pipe_through :browser
-
     get "/", PageController, :index
-    get "/json", JsonController, :index
-
   end
 
-  # Other scopes may use custom stacks.
-  # scope "/api", OmgWeb do
-  #   pipe_through :api
-  # end
+  scope "/organize", OmgWeb do
+    pipe_through :api
+    resources "/", OrganizerController, only: [:create]
+  end
+
 end
