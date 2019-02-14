@@ -21,7 +21,6 @@
       <p class="alert alert-danger" role="alert"><%= get_flash(@conn, :error) %></p>
 
       [ <a href="/json_request.html">Part 1: JSON Sorted</a> |
-      <a href="https://github.com/snowkidind/omg_challenge" target="_blank">Source Code</a> |
       <a href="https://github.com/snowkidind/code-samples" target="_blank">Keny's Code Demos</a> |
       <a href="https://kenyruyter.com" target="_blank">kenyruyter.com</a> |
       <a href="https://twitter.com/snowkidind" target="_blank">Twitter @snowkidind</a> ]
