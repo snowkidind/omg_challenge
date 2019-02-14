@@ -1,31 +1,101 @@
-<section class="phx-hero">
-  <h1><%= gettext "Keny's OmiseGO Challenge" %></h1>
-  <p>OmiseGO challenge headquarters</p>
+<section class="">
+
+<h1 class="heading">Github Search: "<%= @query %>"</h1>
+
+<%= form_for @conn, Routes.page_path(@conn, :index), fn f -> %>
+  <%= text_input f, :q %>
+<% end %>
+
+<h2 class="navigation">
+  [
+  <%= if Map.has_key?(@link, :first) do %>
+    <%= link "First", to: "/github" <> @link.first %> |
+  <%= else %>
+    First |
+  <% end %>
+
+  <%= if Map.has_key?(@link, :previous)  do %>
+    <%= link "Previous", to: "/github" <> @link.previous %> |
+  <%= else %>
+    Previous |
+  <% end %>
+
+  <%= if Map.has_key?(@link, :next) do %>
+    <%= link "Next", to: "/github" <> @link.next %> |
+  <%= else %>
+    Next |
+  <% end %>
+
+  <%= if Map.has_key?(@link, :last) do %>
+    <%= link "Last", to: "/github" <> @link.last %> ]
+  <%= else %>
+    Last ]
+  <% end %>
+</h2>
+
+<h5><em>Displaying page <b><%= @page %></b> of <%= @last %></em></h5>
+
+<table>
+
+  <tr>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Language</th>
+  </tr>
+  <%= for data <- @data do %>
+  <tr>
+    <td>
+
+    <%= if data.homepage do %>
+
+      <div class="title"><a href="<%= data.homepage %>" target="_blank"><%= data.name %></a></div>
+    <%= else %>
+
+      <div class="title"><%= data.name %></div>
+    <%= end %>
 
 
-  <p><a href="/json_request.html">Original JSON Query and response requirements</a></p>
-</section>
+    </td>
+    <td>
+      <%= data.description %>
+    </td>
+    <td>
+      <%= data.language %>
+    </td>
+  </tr>
 
-<section class="row">
-  <article class="column">
-    <h2>Resources</h2>
-    <ul>
-      <li>
-        <a href="https://github.com/snowkidind/code-samples">Code Samples From Past Projects</a>
-      </li>
-      <li>
-        <a href="https://github.com/snowkidind/omg_challenge">Instructions / Github Repository</a></li>
-      <li>
-        <a href="https://kenyruyter.com">Some personal information about me.</a>
-      </li>
-    </ul>
-  </article>
-  <article class="column">
-    <h2>Social</h2>
-    <ul>
-      <li>
-        <a href="https://twitter.com/snowkidind">Twitter @snowkidind</a>
-      </li>
-    </ul>
-  </article>
+  <% end %>
+</table>
+
+
+<h2 class="navigation">
+  [
+  <%= if Map.has_key?(@link, :first) do %>
+    <%= link "First", to: "/github" <> @link.first %> |
+  <%= else %>
+    First |
+  <% end %>
+
+  <%= if Map.has_key?(@link, :previous)  do %>
+    <%= link "Previous", to: "/github" <> @link.previous %> |
+  <%= else %>
+    Previous |
+  <% end %>
+
+  <%= if Map.has_key?(@link, :next) do %>
+    <%= link "Next", to: "/github" <> @link.next %> |
+  <%= else %>
+    Next |
+  <% end %>
+
+  <%= if Map.has_key?(@link, :last) do %>
+    <%= link "Last", to: "/github" <> @link.last %> ]
+  <%= else %>
+    Last ]
+  <% end %>
+</h2>
+
+
+
+
 </section>

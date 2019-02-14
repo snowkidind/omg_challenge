@@ -4,9 +4,7 @@ defmodule OmgWeb.OrganizerController do
   use OmgWeb, :controller
 
   def create(conn, _params) do
-
-    Logger.info "Received JSON: #{inspect(conn.body_params)}"
-    json(conn, conn.body_params)
-
+    response = Transcribe.start(conn.body_params)
+    json(conn, response)
   end
 end

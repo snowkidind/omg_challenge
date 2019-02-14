@@ -2,7 +2,7 @@ defmodule OmgWeb.Router do
   use OmgWeb, :router
 
   pipeline :browser do
-    plug :accepts, ["html"]
+    plug :accepts, ["html", "json"]
     plug :fetch_session
     plug :fetch_flash
     plug :protect_from_forgery
@@ -10,10 +10,9 @@ defmodule OmgWeb.Router do
   end
 
   pipeline :api do
-    plug :accepts, ["json"]
-
-    plug :accepts, ["json-api"]
-    plug Plug.Parsers, parsers: [:urlencoded]
+    # plug :accepts, ["json"]
+    # plug :accepts, ["json-api"]
+    # plug Plug.Parsers, parsers: [:urlencoded]
     #plug JaSerializer.Deserializer
 
   end
@@ -21,10 +20,17 @@ defmodule OmgWeb.Router do
   scope "/", OmgWeb do
     pipe_through :browser
     get "/", PageController, :index
+    post "/", PageController, :index
+  end
+
+  scope "/github", OmgWeb do
+    pipe_through :browser
+    get "/", PageController, :index
+
   end
 
   scope "/organize", OmgWeb do
-    pipe_through :api
+    #pipe_through :api
     resources "/", OrganizerController, only: [:create]
   end
 

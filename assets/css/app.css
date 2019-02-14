@@ -1,3 +1,26 @@
 /* This file is for your main application css. */
 
 @import "./phoenix.css";
+.heading {
+  color: blue;
+  padding-top: 8px;
+  text-align: center;
+}
+
+.navigation {
+  color: black;
+  text-align: center;
+}
+
+.title {
+  font-weight: bold;
+
+}
+
+td {
+  vertical-align: top;
+}
+
+table {
+
+}
