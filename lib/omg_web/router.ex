@@ -9,29 +9,20 @@ defmodule OmgWeb.Router do
     plug :put_secure_browser_headers
   end
 
-  pipeline :api do
-    # plug :accepts, ["json"]
-    # plug :accepts, ["json-api"]
-    # plug Plug.Parsers, parsers: [:urlencoded]
-    #plug JaSerializer.Deserializer
-
-  end
-
   scope "/", OmgWeb do
     pipe_through :browser
-    get "/", PageController, :index
-    post "/", PageController, :index
+    get "/", GithubSearchController, :index # default page
+    post "/", GithubSearchController, :index # search request
   end
 
   scope "/github", OmgWeb do
     pipe_through :browser
-    get "/", PageController, :index
-
+    get "/", GithubSearchController, :index # navigation
   end
 
+  # api post
   scope "/organize", OmgWeb do
-    #pipe_through :api
-    resources "/", OrganizerController, only: [:create]
+    post "/", OrganizerController, :show # calculate JSON
   end
 
 end

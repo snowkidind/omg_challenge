@@ -1,114 +1,39 @@
-# OmiseGO Backend Development challenge:
 
+# OmiseGO Backend Development challenge
 
-Welcome to the OmiseGO backend challenge! Thanks for attempting it, we wish you good luck!
+Greetings! and thank you for checking out my version of the OmiseGO backend challenge. I hope you enjoy reviewing this project as much as I have creating it. 
 
-Keep track of the amount of hours you spend working on this challenge and send it with your submission to thibault@omisego.co.
+When you go to the live site, you will be greeted with part two of the challenge, the github search. I felt adding an actual search box was in order, it is actually pretty useful for searching github!
 
-# Part 1
+*Relevant Files:*
+* [/lib/omg_web/router.ex](/lib/omg_web/router.ex)
+* [/lib/omg_web/controllers/github_search.ex](/lib/omg_web/controllers/github_search_controller.ex)
+* [/lib/omg_web/templates/github_search/index.html.eex](/lib/omg_web/templates/github_search/index.html.eex)
+* [/lib/omg_web/views/github_search_view.ex](/lib/omg_web/views/github_search_view.ex)
+* [/lib/omg/parse_link.ex](/lib/omg/parse_link.ex)
+* [/lib/omg/request.ex](/lib/omg/request.ex)
 
-## Instructions
+The links at the top of the page go to relevant items:
 
-In the first part of this assignment, you will need to create a [Phoenix application](https://phoenixframework.org/).
+**Part 1. JSON Sorted**
 
-- The application needs to have an endpoint that takes a body containing a `JSON` document following the format presented below under [Appendix 1 Input](#appendinx-1-input) as one of the parameters.
-- Upon receiving a call, the Phoenix application will need to run an algorithm to turn the input into the format shown under [Appendix 2 Output](#appendix-2-output). Basically, the `JSON` document needs to be re-organized by moving children into the correct parents.
-- The application should then return the formatted document in a `JSON` document.
+This is the demonstration of the JSON sorting part of the challenge. A static page is loaded where you can submit the data and watch the results appear.
 
-## Algorithm Details
+*Relevant Files:*
+* [/assets/static/json_request.html](/assets/static/json_request.html)
+* [/lib/omg/transcribe.ex](/lib/omg/transcribe.ex)
+* [/lib/omg_web/controllers/organizer_controller.ex](/lib/omg_web/controllers/organizer_controller.ex)
+* [/lib/omg_web/views/json_view.ex](/lib/omg_web/views/json_view.ex)
 
-You will need to write an algorithm in Elixir in your Phoenix application to transform the `JSON` input below into the `JSON` output. Each child should be placed in the `children` array of its parent (as defined by the `parent_id`).
+**Source Code** - A link to this repository on github
 
-## Appendix 1 Input
+**Keny's Code Demos** - Some excerpts of code on my github site
 
-```
-{"0":
-  [{"id": 10,
-    "title": "House",
-    "level": 0,
-    "children": [],
-    "parent_id": null}],
- "1":
-  [{"id": 12,
-    "title": "Red Roof",
-    "level": 1,
-    "children": [],
-    "parent_id": 10},
-   {"id": 18,
-    "title": "Blue Roof",
-    "level": 1,
-    "children": [],
-    "parent_id": 10},
-   {"id": 13,
-    "title": "Wall",
-    "level": 1,
-    "children": [],
-    "parent_id": 10}],
- "2":
-  [{"id": 17,
-    "title": "Blue Window",
-    "level": 2,
-    "children": [],
-    "parent_id": 12},
-   {"id": 16,
-    "title": "Door",
-    "level": 2,
-    "children": [],
-    "parent_id": 13},
-   {"id": 15,
-    "title": "Red Window",
-    "level": 2,
-    "children": [],
-    "parent_id": 12}]}
-```
+**kenyruyter.com** - More background on who I am as a person.
 
-## Appending 2 Output
+**Twitter** - My twitter handle
 
-```
-[{"id": 10,
-  "title": "House",
-  "level": 0,
-  "children":
-   [{"id": 12,
-     "title": "Red Roof",
-     "level": 1,
-     "children":
-      [{"id": 17,
-        "title": "Blue Window",
-        "level": 2,
-        "children": [],
-        "parent_id": 12},
-       {"id": 15,
-        "title": "Red Window",
-        "level": 2,
-        "children": [],
-        "parent_id": 12}],
-     "parent_id": 10},
-    {"id": 18,
-     "title": "Blue Roof",
-     "level": 1,
-     "children": [],
-     "parent_id": 10},
-    {"id": 13,
-     "title": "Wall",
-     "level": 1,
-     "children":
-      [{"id": 16,
-        "title": "Door",
-        "level": 2,
-        "children": [],
-        "parent_id": 13}],
-     "parent_id": 10}],
-  "parent_id": null}]
-```
+A few tests can be found in [/test/omg](/test/omg).
 
-# Part 2
-
-## Instructions
-
-Use the [GitHub Search API](https://developer.github.com/v3/guides/traversing-with-pagination/) with pagination to find all the repositories that match the query `elixir`. Query results 10 by 10 and display them in a view in the Phoenix application you built in Step 1. Results should be displayed in a table (it doesn't have to look good) and pagination should be fully functional on the front-end side.
-
-# Guidelines
-
-- Don't forget documentation.
-- The pagination between your local application and the GitHub results should be synced.
+Here are the [Original Instructions](INSTRUCTIONS.md)
+and the [Job Description](https://omise.breezy.hr/p/8ae986c91898-go-exchange-software-developer) 

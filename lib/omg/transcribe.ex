@@ -1,5 +1,22 @@
 defmodule Transcribe do
 
+  @doc"""
+
+  The transcribe module is intended to handle a JSON request
+  containing objects of known composition. It contains three
+  indices, 1. parent, 2. children, 3. nephews
+
+  After breaking the object up into respective parts, it then
+  attaches nephews to children and then children to parents by
+  their respective self proclaimed ID's.
+
+  No error checking was coded in because the required task is
+  very specific. To apply this to other embodiments, more
+  information would be needed and robust error checking would
+  be required.
+
+  """
+
   def start(map) do
 
     p = map["0"]
@@ -17,7 +34,6 @@ defmodule Transcribe do
 
     # 3. add child array to parent
     |> build_descendants(parent)
-
   end
 
   # Attach nephews to children list

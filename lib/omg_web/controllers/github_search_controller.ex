@@ -1,10 +1,14 @@
-defmodule OmgWeb.PageController do
+defmodule OmgWeb.GithubSearchController do
+
+  @doc"""
+
+  Front page for the OmgWeb site.
+
+  """
 
   use OmgWeb, :controller
 
   def index(conn, params) do
-
-    IO.inspect params
 
     # 1. Compose Api request string
     # template: url = "https://api.github.com/search/repositories?q=elixir&per_page=10&page=1"
@@ -14,13 +18,14 @@ defmodule OmgWeb.PageController do
     headers = ["User-Agent": "OmiseGo"]
 
     # 2. execute and parse
-    {status, body, original_headers} = OmgWeb.Myclient.Api.get(url, headers)
+    {_status, body, original_headers} = OmgWeb.Request.Api.get(url, headers)
 
     # 3. if search results were found... parse results
-    if body.total_count > 0 do
+    if Map.has_key?(body, :total_count) && body.total_count > 0 do
 
+    IO.inspect original_headers
       # crunch the link headers to determine navigation
-      {last, link} = OmgWeb.Myclient.Api.link_headers(original_headers)
+      {last, link} = OmgWeb.ParseLink.link_headers(original_headers)
 
       # select appropriate data from github response to carry forth
       data = for item <- body.items, do: %{
@@ -42,8 +47,7 @@ defmodule OmgWeb.PageController do
       # ideally, it would just display empty results and protect bad search.
       conn
       |> put_flash(:error, "No results found. Displaying default search.")
-      |> redirect(to: Routes.page_path(conn, :index))
-
+      |> redirect(to: Routes.github_search_path(conn, :index))
     end
   end
 

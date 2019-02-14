@@ -2,7 +2,7 @@
 
 <h1 class="heading">Github Search: "<%= @query %>"</h1>
 
-<%= form_for @conn, Routes.page_path(@conn, :index), fn f -> %>
+<%= form_for @conn, Routes.github_search_path(@conn, :index), fn f -> %>
   <%= text_input f, :q %>
 <% end %>
 
@@ -10,25 +10,25 @@
   [
   <%= if Map.has_key?(@link, :first) do %>
     <%= link "First", to: "/github" <> @link.first %> |
-  <%= else %>
+  <% else %>
     First |
   <% end %>
 
   <%= if Map.has_key?(@link, :previous)  do %>
     <%= link "Previous", to: "/github" <> @link.previous %> |
-  <%= else %>
+  <% else %>
     Previous |
   <% end %>
 
   <%= if Map.has_key?(@link, :next) do %>
     <%= link "Next", to: "/github" <> @link.next %> |
-  <%= else %>
+  <% else %>
     Next |
   <% end %>
 
   <%= if Map.has_key?(@link, :last) do %>
     <%= link "Last", to: "/github" <> @link.last %> ]
-  <%= else %>
+  <% else %>
     Last ]
   <% end %>
 </h2>
@@ -49,10 +49,10 @@
     <%= if data.homepage do %>
 
       <div class="title"><a href="<%= data.homepage %>" target="_blank"><%= data.name %></a></div>
-    <%= else %>
+    <% else %>
 
       <div class="title"><%= data.name %></div>
-    <%= end %>
+    <% end %>
 
 
     </td>
@@ -72,30 +72,27 @@
   [
   <%= if Map.has_key?(@link, :first) do %>
     <%= link "First", to: "/github" <> @link.first %> |
-  <%= else %>
+  <% else %>
     First |
   <% end %>
 
   <%= if Map.has_key?(@link, :previous)  do %>
     <%= link "Previous", to: "/github" <> @link.previous %> |
-  <%= else %>
+  <% else %>
     Previous |
   <% end %>
 
   <%= if Map.has_key?(@link, :next) do %>
     <%= link "Next", to: "/github" <> @link.next %> |
-  <%= else %>
+  <% else %>
     Next |
   <% end %>
 
   <%= if Map.has_key?(@link, :last) do %>
     <%= link "Last", to: "/github" <> @link.last %> ]
-  <%= else %>
+  <% else %>
     Last ]
   <% end %>
 </h2>
-
-
-
 
 </section>
